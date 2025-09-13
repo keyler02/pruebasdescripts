@@ -1,5 +1,120 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/CAXAP26BKyCH/library/refs/heads/main/Uilibrary"))()
-local Window = Library:AddWindow("Doca V1 | Paid Version", {
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer  -- Debe ser LocalScript. Si es Script de servidor, no funcionará.
+
+if not player then
+    warn("[WHITELIST] Este script debe ejecutarse como LocalScript (LocalPlayer es nil).")
+    return
+end
+
+-- CONFIGURACIÓN
+local allowedUsernames = { -- NOMBRES EXACTOS (Name), no DisplayName
+    "keyler632",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+
+}
+local allowedUserIds = { -- OPCIONAL: añade IDs si quieres máxima fiabilidad
+    -- , ,
+}
+
+-- Normaliza nombres a minúsculas para evitar fallos por mayúsculas
+local usernameSet = {}
+for _, n in ipairs(allowedUsernames) do
+    usernameSet[string.lower(n)] = true
+end
+
+local userIdSet = {}
+for _, id in ipairs(allowedUserIds) do
+    userIdSet[id] = true
+end
+
+-- Chequeo
+local nameKey = string.lower(player.Name)
+local isWhitelisted = usernameSet[nameKey] or userIdSet[player.UserId] or false
+
+if not isWhitelisted then
+    warn(string.format("[WHITELIST] %s (UserId %d) NO está autorizado. Abortando script.", player.Name, player.UserId))
+    return
+end
+
+print(string.format("[WHITELIST] Acceso permitido a %s (UserId %d).", player.Name, player.UserId))
+
+-- ======================================================
+-- DESDE AQUÍ COLOCA TU PANTALLA DE CONTRASEÑA Y EL RESTO
+-- ======================================================
+
+-- CONFIGURACIÓN DE CONTRASEÑA
+local scriptPassword = "Keyzorxxx" -- Cambia la contraseña aquí
+
+-- Crear GUI de contraseña
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextBox = Instance.new("TextBox")
+local Button = Instance.new("TextButton")
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)Frame.Position = UDim2.new(0.5, -150, 0.5, -75)
+Frame.Size = UDim2.new(0, 300, 0, 150)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(1, 0, 0.4, 0)
+TextLabel.Text = "Introduce la contraseña"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.TextSize = 20
+
+TextBox.Parent = Frame
+TextBox.Position = UDim2.new(0.1, 0, 0.4, 0)
+TextBox.Size = UDim2.new(0.8, 0, 0.25, 0)
+TextBox.PlaceholderText = "Contraseña"
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.TextSize = 18
+
+Button.Parent = Frame
+Button.Position = UDim2.new(0.3, 0, 0.7, 0)
+Button.Size = UDim2.new(0.4, 0, 0.2, 0)
+Button.Text = "Entrar"
+Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+Button.Font = Enum.Font.SourceSansBold
+Button.TextSize = 18
+Button.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+
+-- Bloquear ejecución del script hasta que la contraseña sea correcta
+local accessGranted = false
+
+Button.MouseButton1Click:Connect(function()
+    if TextBox.Text == scriptPassword then
+        accessGranted = true
+        ScreenGui:Destroy() -- Eliminar GUI
+    else
+        TextLabel.Text = "Contraseña incorrecta"
+        TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+    end
+end)
+
+-- Esperar a que se ingrese la contraseña correcta
+repeat task.wait() until accessGranted
+
+-- =========================
+-- AQUÍ VA TU SCRIPT ORIGINAL
+-- =========================
+print("Contraseña correcta, ejecutando script...")
+
+    local Window = Library:AddWindow("Doca V1 | Paid Version", {
     main_color = Color3.fromRGB(255, 0, 0),
     min_size = Vector2.new(500, 600),
     can_resize = true
