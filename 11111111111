@@ -148,7 +148,7 @@ end
 setupAntiAFK()
 
 -- Create Main Window
-local window = library:AddWindow("Personal Hades V1", {
+local window = library:AddWindow("¿ÁNGELxGAYTON_PRIV¿", {
     main_color = Color3.fromRGB(181, 73, 248),
     min_size = Vector2.new(800, 900),
     can_resize = true,
@@ -159,7 +159,7 @@ local mainTab = window:AddTab("Menu")
 local farmPlusTab = window:AddTab("Farm")
 mainTab:Show() -- Show this tab by default
 
-mainTab:AddLabel("¿ÁNGELxGAYTON¿")
+mainTab:AddLabel("¿ GT ON TOP ¿")
 
 local jungleGymFolder = mainTab:AddFolder("Jungle Gym")
 
