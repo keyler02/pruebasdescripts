@@ -149,7 +149,7 @@ setupAntiAFK()
 
 -- Create Main Window
 local window = library:AddWindow("¿ÁNGELxGAYTON_PRIV¿", {
-    main_color = Color3.fromRGB(181, 73, 248),
+    main_color = Color3.fromRGB(0, 20, 255),
     min_size = Vector2.new(800, 900),
     can_resize = true,
 })
