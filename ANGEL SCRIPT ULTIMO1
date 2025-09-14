@@ -51,7 +51,7 @@ print(string.format("[WHITELIST] Acceso permitido a %s (UserId %d).", player.Nam
 -- ======================================================
 
 -- CONFIGURACIÓN DE CONTRASEÑA
-local scriptPassword = "ANGEL-GAYTON" -- Cambia la contraseña aquí
+local scriptPassword = "AngelxKeyzorxx" -- Cambia la contraseña aquí
 
 -- Crear GUI de contraseña
 local ScreenGui = Instance.new("ScreenGui")
@@ -148,7 +148,7 @@ end
 setupAntiAFK()
 
 -- Create Main Window
-local window = library:AddWindow("¿ÁNGELxGAYTON_PRIV¿", {
+local window = library:AddWindow("ANGEL'S PRIV HUB", {
     main_color = Color3.fromRGB(0, 20, 255),
     min_size = Vector2.new(800, 900),
     can_resize = true,
