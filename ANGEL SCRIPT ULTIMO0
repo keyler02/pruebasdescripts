@@ -574,7 +574,7 @@ local RightHand = LocalPlayer.Character:FindFirstChild("RightHand") or LocalPlay
 local LeftHand = LocalPlayer.Character:FindFirstChild("LeftHand") or LocalPlayer.Character:FindFirstChild("Left Arm")
 
 -- Configuración del intervalo mínimo que el servidor acepta
-local minInterval = 0.05 -- Ajusta si notas golpes perdidos
+local minInterval = 0.10-- Ajusta si notas golpes perdidos
 
 autoRockFolder:AddSwitch("Auto Bug Pets", function(Value)
     getgenv().autoFarm = Value
@@ -1793,7 +1793,7 @@ local function useOneEgg()
     ReplicatedStorage.rEvents.proteinEggEvent:FireServer("useEgg")
 end
 
-rebirthFarmFolder:AddLabel("OP Rebirth Farm (From HAVOC)")
+rebirthFarmFolder:AddLabel("OP Rebirth Farm (From KEYZORXX)")
 
 rebirthFarmFolder:AddTextBox("Target Rebirth (Doesn't work, I Won't make it work)", function(text)
     targetRebirth = tonumber(text) or math.huge
